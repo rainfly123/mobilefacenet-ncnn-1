@@ -2,6 +2,7 @@
 #define BASE_H
 #include <cmath>
 #include <cstring>
+#include <vector>
 #include "net.h"
 
 typedef struct FaceInfo {
@@ -12,6 +13,11 @@ typedef struct FaceInfo {
     float regreCoord[4];
     int landmark[10];
 } FaceInfo;
+
+typedef struct FaceFeature{
+     unsigned char name[32];
+     std::vector <float>  feature;
+}FaceFeature;
 
 ncnn::Mat resize(ncnn::Mat src, int w, int h);
 

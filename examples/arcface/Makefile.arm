@@ -1,0 +1,17 @@
+CXX = arm-buildroot-linux-gnueabihf-g++ 
+#COMMON = `pkg-config --cflags opencv`
+LIB = ../ncnn_arm/lib/libncnn.a
+LIB += -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_imgcodecs -lopencv_videoio -lpthread
+INCLUDE = -I../ncnn_arm/include
+COMMON += -fopenmp -pthread -std=c++11
+LINKFLAGS += -fopenmp -pthread -fPIC $(COMMON_FLAGS) $(WARNINGS) -std=c++11
+DEPS = $(wildcard *.h)
+OBJ = base.o mtcnn.o arcface.o
+all : main
+main : main.cpp $(OBJ)
+	$(CXX) $(LINKFLAGS) $(INCLUDE) $^ -o $@ $(LIB)
+%.o : %.cpp $(DEPS)
+	$(CXX) $(INCLUDE) -c -fPIC -O3 $< -o $@
+.PHONY : clean
+clean :
+	rm -rf $(OBJ) main

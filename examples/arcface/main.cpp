@@ -78,8 +78,8 @@ int main(int argc, char* argv[])
     ncnn::destroy_gpu_instance();
 #endif // NCNN_VULKAN
 
-    imshow("det1", ncnn2cv(det1));
-    imshow("det2", ncnn2cv(det2));
+    //imshow("det1", ncnn2cv(det1));
+    //imshow("det2", ncnn2cv(det2));
 
     waitKey(0);
     return 0;

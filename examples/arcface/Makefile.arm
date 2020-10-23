@@ -9,9 +9,9 @@ DEPS = $(wildcard *.h)
 OBJ = base.o mtcnn.o arcface.o
 all : main
 main : main.cpp $(OBJ)
-	$(CXX) $(LINKFLAGS) $(INCLUDE) $^ -o $@ $(LIB)
+	$(CXX) -march=armv7-a -mfloat-abi=hard -mfpu=neon-vfpv4 $(LINKFLAGS) $(INCLUDE) $^ -O3 -o $@ $(LIB)
 %.o : %.cpp $(DEPS)
-	$(CXX) $(INCLUDE) -c -fPIC -O3 $< -o $@
+	$(CXX) $(INCLUDE) -march=armv7-a -mfloat-abi=hard -mfpu=neon-vfpv4 -c -fPIC -O3 $< -o $@
 .PHONY : clean
 clean :
 	rm -rf $(OBJ) main

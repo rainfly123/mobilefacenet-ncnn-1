@@ -16,7 +16,7 @@ typedef struct FaceInfo {
 
 typedef struct FaceFeature{
      unsigned char name[32];
-     std::vector <float>  feature;
+     float  feature[128];
 }FaceFeature;
 
 ncnn::Mat resize(ncnn::Mat src, int w, int h);

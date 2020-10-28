@@ -63,7 +63,8 @@ int main(int argc, char* argv[])
     for (auto it = gFeatures.begin(); it != gFeatures.end(); it++)
         {
            std::cout << "With: " << (*it).name << "  ";
-           std::cout << "Similarity: " << calcSimilar(feature1, (*it).feature) << std::endl;;
+           vector <float> tmp((*it).feature,(*it).feature+128);
+           std::cout << "Similarity: " << calcSimilar(feature1, tmp) << std::endl;;
         }
 
 
